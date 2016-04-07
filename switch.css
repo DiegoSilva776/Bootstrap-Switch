@@ -1,0 +1,70 @@
+.btn-group.btn-switch{
+	width:200px;
+	height:36px;
+	overflow:hidden;
+	border:1px solid #eaeaea;
+	border-radius:5px;
+}
+.btn-switch .btn{
+	position:relative;
+	float:left;
+	width:99px;
+}
+.btn-switch .switched-off.btn:last-child{
+	position:relative;
+	right:-100px;
+}
+.btn-switch .switched-on.btn:first-child{
+	position:relative;
+	left:-100px;
+}
+.btn-switch i{
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity:0;
+}
+
+i.switched-on, i.switched-off {
+    position:relative;
+    top:0px;
+    font-size: 13px;
+    font-weight:600;
+    color:#999999;
+}
+i.switched-on{
+    animation-name: switch-on;
+    animation-duration: 1s;
+    opacity:1;
+    margin-left:-85px;
+}
+i.switched-off{
+    animation-name: switch-off;
+    animation-duration: 1s;
+    opacity:1;
+    margin-left:-175px;
+}
+
+/* Animations */
+@keyframes switch-on {
+    from {
+        opacity:0;
+        margin-left:0px;
+    }
+    to {
+        opacity:1;
+        margin-left:-85px;
+    }
+}
+
+@keyframes switch-off {
+    from {
+        opacity:0;
+        margin-left:0px;
+    }
+    to {
+        opacity:1;
+        margin-left:-175px;
+    }
+}
