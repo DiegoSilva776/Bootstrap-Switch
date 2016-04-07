@@ -42,7 +42,7 @@ var Switch = function(el, offMsg, onMsg){
     
     // Indicates the logical state of the controller
     var _el = undefined;
-    var _state = false;
+    var state = false;
     
     
     // METHODS
@@ -62,7 +62,7 @@ var Switch = function(el, offMsg, onMsg){
             $(el).parent().append(INFO_ICO_ON);
             
             // Logic operations
-            _state = false;
+            state = true;
         }else{
             // UI operations
             $(el).find(SLCTR_SWITCH_CHILD).first().addClass(CLASS_ON)
@@ -70,13 +70,15 @@ var Switch = function(el, offMsg, onMsg){
             $(el).parent().append(INFO_ICO_OFF);
             
             // Logic operations
-            _state = true;
-        };
-        
-        var isItOn = function(){
-            return _state;
+            state = false;
         };
     }
+    
+    this.isItOn = function(){
+        return state;
+    };
+    
+    
     
     // INITIALIZER
     this.init = function(offMsg, onMsg){
