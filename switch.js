@@ -18,16 +18,20 @@
  */
 var Switch = function(el, offMsg, onMsg){
     
-    // ATTRIBUTES
-    // 'On' and 'Off' messages
-    var MSG_OFF = "Finalizada";
-    var MSG_ON  = "Aberta";
+    
+    // Indicates the logical state of the controller
+    var _el = undefined;
+    var _offMsg = "Off";
+    var _onMsg  = "On";
+    var state = false;
     
     // Classes used by the plugin elements
     var CLASS_ON     = "switched-on";
     var CLASS_OFF    = "switched-off";
     var CLASS_SWITCH = "btn-switch";
     var CLASS_BTN    = "btn";
+    var CLASS_DANGER = "pay-attention";
+    var CLASS_SAFE   = "your-ok";
     
     // Selectors
     var SLCTR_SWITCH       = el;
@@ -37,37 +41,41 @@ var Switch = function(el, offMsg, onMsg){
     
     // Elements inserted dynamically
     var TAG_INFO_ICO  = "i";
-    var INFO_ICO_ON   = "<"+TAG_INFO_ICO+" class='"+CLASS_ON+"'>"+ MSG_OFF +"</"+TAG_INFO_ICO+">";
-    var INFO_ICO_OFF  = "<"+TAG_INFO_ICO+" class='"+CLASS_OFF+"'>"+ MSG_ON +"</"+TAG_INFO_ICO+">";
-    
-    // Indicates the logical state of the controller
-    var _el = undefined;
-    var state = false;
+    var INFO_ICO_ON   = "<"+TAG_INFO_ICO+" class='"+CLASS_ON+"'>"+ _offMsg +"</"+TAG_INFO_ICO+">";
+    var INFO_ICO_OFF  = "<"+TAG_INFO_ICO+" class='"+CLASS_OFF+"'>"+ _onMsg +"</"+TAG_INFO_ICO+">";
     
     
     // METHODS
     var wireEvents = function(){
-        $(SLCTR_SWITCH).click(function(){
+        $(_el).click(function(){
             switchToggle(this);
         });
     };
     
     var switchToggle = function(el){
-        $(el).parent().find(TAG_INFO_ICO).remove();
+        $(el).find(TAG_INFO_ICO).remove();
         
         if($(el).find(SLCTR_SWITCH_CHILD).first().hasClass(CLASS_ON)){
             // UI operations
             $(el).find(SLCTR_SWITCH_CHILD).first().removeClass(CLASS_ON)
+            $(el).find(SLCTR_SWITCH_CHILD).last().removeClass(CLASS_ON);
+            $(el).find(SLCTR_SWITCH_CHILD).first().addClass(CLASS_OFF)
             $(el).find(SLCTR_SWITCH_CHILD).last().addClass(CLASS_OFF);
-            $(el).parent().append(INFO_ICO_ON);
+            
+            // add info to label
+            $(el).append(INFO_ICO_ON);
             
             // Logic operations
             state = true;
         }else{
             // UI operations
-            $(el).find(SLCTR_SWITCH_CHILD).first().addClass(CLASS_ON)
+            $(el).find(SLCTR_SWITCH_CHILD).first().removeClass(CLASS_OFF)
             $(el).find(SLCTR_SWITCH_CHILD).last().removeClass(CLASS_OFF);
-            $(el).parent().append(INFO_ICO_OFF);
+            $(el).find(SLCTR_SWITCH_CHILD).first().addClass(CLASS_ON)
+            $(el).find(SLCTR_SWITCH_CHILD).last().addClass(CLASS_ON);
+            
+            // add info to label
+            $(el).append(INFO_ICO_OFF);
             
             // Logic operations
             state = false;
@@ -78,23 +86,29 @@ var Switch = function(el, offMsg, onMsg){
         return state;
     };
     
+    this.setState = function(on){
+        this.state = on;
+        switchToggle(_el);
+    }
     
     
     // INITIALIZER
-    this.init = function(offMsg, onMsg){
+    this.init = function(el, offMsg, onMsg){
     
-        // Initialize button state message
-        MSG_OFF = offMsg;
-        MSG_ON  = onMsg;
+        // initialize data model
+        _el = el;
+        _offMsg = offMsg;
+        _onMsg  = onMsg;
+    
+        INFO_ICO_ON  = "<"+TAG_INFO_ICO+" class='"+CLASS_ON+"'>"+ _offMsg +"</"+TAG_INFO_ICO+">";
+        INFO_ICO_OFF = "<"+TAG_INFO_ICO+" class='"+CLASS_OFF+"'>"+ _onMsg +"</"+TAG_INFO_ICO+">";
     
         // Initialize controller
-        $(document).find(SLCTR_SWITCH).each(function(){
-            switchToggle(this);
-        });
-    
+        switchToggle(_el);
+        
         // Wire prototype events    
         wireEvents();    
     };
     
-    this.init(offMsg, onMsg);
+    this.init(el, offMsg, onMsg);
 }
