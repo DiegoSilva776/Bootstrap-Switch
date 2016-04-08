@@ -16,15 +16,15 @@ HTML
   
   <div id="formDayTaskStatus" class="switch pull-left">
 									    
-		<div>
+	<div>
 		    
-		    <button type="button" class="btn btn-default switched-off">Abrir</button>
+		<button type="button" class="btn btn-default switched-off">Abrir</button>
 											
-				<button type="button" class="btn btn-default switched-off">Finalizar</button>
+		<button type="button" class="btn btn-default switched-off">Finalizar</button>
 								
-	  </div>
-									
 	</div>
+									
+  </div>
   
   
 JS
