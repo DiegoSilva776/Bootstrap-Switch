@@ -8,42 +8,42 @@ HTML
 
   1 - Insert the 'switch.js' file into your page.
   
-    <link rel="stylesheet" type="text/css" href="../path/switch.css"/>
+    	<link rel="stylesheet" type="text/css" href="../path/switch.css"/>
     
-    <script src="../path/switch.js"></script>
+    	<script src="../path/switch.js"></script>
   
   2 - Create a Switch
   
   
-  <div id="formDayTaskStatus" class="switch pull-left">
+  	<div id="formDayTaskStatus" class="switch pull-left">
 									    
-	<div>
+		<div>
 		    
-		<button type="button" class="btn btn-default switched-off">Abrir</button>
+			<button type="button" class="btn btn-default switched-off">Abrir</button>
 											
-		<button type="button" class="btn btn-default switched-off">Finalizar</button>
+			<button type="button" class="btn btn-default switched-off">Finalizar</button>
 								
-	</div>
+		</div>
 									
-  </div>
-  
-  
+  	</div>
+
   
 JS
 
   1 - Create a Switch object and attach it to the DOM object
   
-    var inputStatus = new Switch("#formDayTaskStatus", "Switched on message", "Switched off message");
+    	var inputStatus = new Switch("#formDayTaskStatus", "Switched on message", "Switched off message");
   
   2 - Control the state of the your switch
   
-    // set value
+    	// set value
   
-    inputStatus.setState(true);
+    	inputStatus.setState(true);
     
-    // get value
+    	// get value
     
-    var res = formDayBtnSwitchStatus.isItOn();
+    	var res = formDayBtnSwitchStatus.isItOn();
+    	
     
     
     
