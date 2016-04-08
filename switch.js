@@ -28,10 +28,7 @@ var Switch = function(el, offMsg, onMsg){
     // Classes used by the plugin elements
     var CLASS_ON     = "switched-on";
     var CLASS_OFF    = "switched-off";
-    var CLASS_SWITCH = "btn-switch";
     var CLASS_BTN    = "btn";
-    var CLASS_DANGER = "pay-attention";
-    var CLASS_SAFE   = "your-ok";
     
     // Selectors
     var SLCTR_SWITCH       = el;
