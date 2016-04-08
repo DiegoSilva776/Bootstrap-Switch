@@ -14,6 +14,7 @@ HTML
   
   2 - Create a Switch
   
+  
   <div id="formDayTaskStatus" class="switch pull-left">
 									    
 	<div>
@@ -25,6 +26,7 @@ HTML
 	</div>
 									
   </div>
+  
   
   
 JS
