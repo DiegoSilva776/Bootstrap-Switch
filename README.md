@@ -14,27 +14,34 @@ HTML
   
   2 - Create a Switch
   
-  <div class="switch">
-  
-    <div id="formDayTaskStatus" class="btn-group btn-switch" role="group">
-    
-      <button type="button" class="btn btn-info switched-off">Reabrir</button>
-      
-      <button type="button" class="btn btn-danger">Finalizar</button>
-      
-    </div>
-    
-  </div>
+  <div id="formDayTaskStatus" class="switch pull-left">
+									    
+		<div>
+		    
+		    <button type="button" class="btn btn-default switched-off">Abrir</button>
+											
+				<button type="button" class="btn btn-default switched-off">Finalizar</button>
+								
+	  </div>
+									
+	</div>
   
   
 JS
 
   1 - Create a Switch object and attach it to the DOM object
   
-    var formDayBtnSwitchStatus = new Switch("#formDayTaskStatus", "Finalizar", "Reabrir");
+    var inputStatus = new Switch("#formDayTaskStatus", "Switched on message", "Switched off message");
   
   2 - Control the state of the your switch
   
+    // set value
+  
+    inputStatus.setState(true);
+    
+    // get value
+    
     var res = formDayBtnSwitchStatus.isItOn();
+    
     
     
