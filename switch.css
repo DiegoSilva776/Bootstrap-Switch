@@ -1,70 +1,69 @@
-.btn-group.btn-switch{
-	width:200px;
-	height:36px;
-	overflow:hidden;
-	border:1px solid #eaeaea;
-	border-radius:5px;
+.modal-footer .btn-group .btn+.btn {
+    margin-left: -100px;
+    top: -6px;
 }
-.btn-switch .btn{
-	position:relative;
-	float:left;
-	width:99px;
+
+.switch{
+    height: 38px;
+    width: 170px;
+    padding: 5px;
+    
+    background-color: #eaeaea;
+    border-radius: 5px;
+    border:1px solid #e6e6e6;
+}    
+.switch div{
+    width:100%;
 }
-.btn-switch .switched-off.btn:last-child{
-	position:relative;
-	right:-100px;
+.switch div .btn{
+    float:left;
+    height: 26px;
+    width: 50%; 
+    margin-left:0px !important;
+    margin-top: 0px; 
+    padding: 0px;
 }
-.btn-switch .switched-on.btn:first-child{
-	position:relative;
-	left:-100px;
+.switch div .btn:first-child{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
-.btn-switch i{
-    display: inline-block;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    opacity:0;
+.switch div .btn:last-child{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.switch i{
+    float:left;
+    top:0px;
 }
 
 i.switched-on, i.switched-off {
     position:relative;
-    top:0px;
-    font-size: 13px;
+    top:-22px;
+    left:180px;
+    
+    opacity:0px;
+    font-size: 15px;
     font-weight:600;
-    color:#999999;
+    color:#333333;
 }
-i.switched-on{
-    animation-name: switch-on;
+i.switched-on, i.switched-off{
+    animation-name: switch-state;
     animation-duration: 1s;
     opacity:1;
-    margin-left:-85px;
 }
-i.switched-off{
-    animation-name: switch-off;
-    animation-duration: 1s;
-    opacity:1;
-    margin-left:-175px;
+
+.switch div .btn:first-child.switched-on, .switch div .btn:last-child.switched-off{
+    position:relative;
+    top:3px;
+    opacity:0.4;
 }
 
 /* Animations */
-@keyframes switch-on {
+@keyframes switch-state {
     from {
         opacity:0;
-        margin-left:0px;
     }
     to {
         opacity:1;
-        margin-left:-85px;
-    }
-}
-
-@keyframes switch-off {
-    from {
-        opacity:0;
-        margin-left:0px;
-    }
-    to {
-        opacity:1;
-        margin-left:-175px;
     }
 }
